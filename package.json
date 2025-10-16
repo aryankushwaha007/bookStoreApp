@@ -1,0 +1,15 @@
+{
+    "name": "book_store_app",
+    "private": true,
+    "version": "1.0.0",
+    "description": "Root package.json for monorepo to manage Frontend and Backend",
+    "license": "MIT",
+    "scripts": {
+        "install:all": "npm --prefix Backend install && npm --prefix Frontend install",
+        "dev:backend": "npm --prefix Backend run dev",
+        "start:backend": "npm --prefix Backend start",
+        "dev:frontend": "npm --prefix Frontend run dev",
+        "build:frontend": "npm --prefix Frontend run build",
+        "preview:frontend": "npm --prefix Frontend run preview"
+    }
+}

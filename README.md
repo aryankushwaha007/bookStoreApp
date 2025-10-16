@@ -73,6 +73,17 @@ A full-stack book discovery app built with React (Vite, Tailwind v4, daisyUI) an
   - npm run build — production build
   - npm run preview — preview built assets
 
+### Root-level convenience scripts
+
+From the repo root, you can run:
+
+- Install all deps (Frontend + Backend):
+  - npm run install:all
+- Start backend dev server:
+  - npm run dev:backend
+- Start frontend dev server:
+  - npm run dev:frontend
+
 ## Troubleshooting
 
 - If backend restarts excessively on OneDrive, we already enabled nodemon legacy watch.
