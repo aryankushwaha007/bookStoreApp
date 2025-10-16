@@ -22,7 +22,7 @@ const About = () => {
                     <div className="card bg-base-100 shadow">
                         <div className="card-body">
                             <h2 className="card-title">Community First</h2>
-                            <p>We listen to readers and highlight what7s trending in the community.</p>
+                            <p>We listen to readers and highlight what's trending in the community.</p>
                         </div>
                     </div>
                     <div className="card bg-base-100 shadow">
@@ -37,8 +37,8 @@ const About = () => {
                     <div className="card-body">
                         <h3 className="card-title">Our Story</h3>
                         <p>
-                            BookStore started as a simple list shared among friends. Today, it7s a growing destination for
-                            readers everywherebringing together quality recommendations, easy discovery, and a welcoming community.
+                            BookStore started as a simple list shared among friends. Today, it's a growing destination for
+                            readers everywhere—bringing together quality recommendations, easy discovery, and a welcoming community.
                         </p>
                     </div>
                 </div>

@@ -9,6 +9,10 @@ yarn-error.log
 Backend/.env
 Frontend/.env
 
+# allow example env files
+!Backend/.env.example
+!Frontend/.env.example
+
 # Vite
 Frontend/dist/
 
