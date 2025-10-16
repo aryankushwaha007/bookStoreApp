@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Login from './Login';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const Navbar = () => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
@@ -21,6 +22,7 @@ const Navbar = () => {
     }, [theme]);
 
     const [sticky, setSticky] = useState(false);
+    const { user, logout } = useAuth();
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) {
@@ -130,8 +132,17 @@ const Navbar = () => {
                             </svg>
                         </label>
                         <div className="">
-                            <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer" onClick={()=>document.getElementById("my_modal_3").showModal()}>LogIn</a>
-                            <Login></Login>
+                            {user ? (
+                                <div className="flex items-center gap-3">
+                                    <span className="text-sm opacity-80">Hi, {user.name.split(' ')[0]}</span>
+                                    <button onClick={logout} className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600 duration-300 cursor-pointer">Logout</button>
+                                </div>
+                            ) : (
+                                <>
+                                    <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer" onClick={() => document.getElementById("my_modal_3").showModal()}>LogIn</a>
+                                    <Login></Login>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>

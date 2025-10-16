@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { useAuth } from '../context/AuthContext.jsx'
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { login, error, loading } = useAuth();
 
-    const onSubmit = (data) => {
-        console.log('Login submit', data);
-        // Close the dialog after successful submit
-        document.getElementById('my_modal_3')?.close();
+    const onSubmit = async (data) => {
+        const res = await login(data.email, data.password);
+        if (res.ok) {
+            document.getElementById('my_modal_3')?.close();
+        }
     };
-
     return (
         <div>
             <dialog id="my_modal_3" className="modal">
@@ -24,6 +26,7 @@ const Login = () => {
 
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <h3 className="font-bold text-lg">Login</h3>
+                        {error && <p className="text-error text-sm mt-1">{error}</p>}
                         {/* email */}
                         <div className='mt-4 space-y-2'>
                             <span>Email</span>
@@ -50,7 +53,9 @@ const Login = () => {
                         </div>
                         {/* Login button */}
                         <div className='mt-4 flex flex-wrap items-center gap-4'>
-                            <button type="submit" className='bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200 cursor-pointer'>Login</button>
+                            <button type="submit" disabled={loading} className='bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200 cursor-pointer'>
+                                {loading ? 'Logging in...' : 'Login'}
+                            </button>
                             <p>
                                 Not Registered?{' '}
                                 <Link

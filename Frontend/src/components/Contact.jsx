@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 const Contact = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [submitted, setSubmitted] = useState(false);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         console.log('Contact form submitted', data);
         setSubmitted(true);
         reset();
-        setTimeout(() => setSubmitted(false), 3000);
+        // Show success briefly, then redirect home
+        setTimeout(() => {
+            setSubmitted(false);
+            navigate('/');
+        }, 1800);
     };
 
     return (
